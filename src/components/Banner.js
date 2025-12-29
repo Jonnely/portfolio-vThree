@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap"
-import { ArrowRightCircle } from 'react-bootstrap-icons';
-// import restingPlanet from '../assets/img/resting.png';
-// import restingPlanet from '../assets/img/rester.png';
 import restingPlanet from '../assets/img/rester_2.png';
-// import restingPlanet from '../assets/img/header-img.svg';
+import 'animate.css';
+import TrackVisibility from 'react-on-screen';
 
 export const Banner = () => {
 
@@ -48,10 +46,18 @@ export const Banner = () => {
             <Container>
                 <Row className="align-items-center">
                     <Col xs={12} md={6} xl={7}>
-                        <span className="tagline">Welcome to My Portfolio</span>
-                        <h1>{`Hi, I'm Jonnel, `}<span className="wrap">{text}</span></h1>
+                         <span className="tagline">Welcome to My Portfolio</span>
+                        <TrackVisibility>
+                        {({ isVisible }) => 
+                        <div className={isVisible ? "animate__animated animate__bounce" : ""}>
+                       
+                            <h1>{`Hi, I'm Jonnel, `}<br /></h1>
+                        </div>
+                        }
+                        </TrackVisibility>
+                        <h1><span className="wrap">{text}</span></h1>
                         <p>I am a passionate full stack Software Engineer with experience in building dynamic and responsive web applications. I love coding and continuously learning new technologies to enhance my skills.</p>
-                    </Col>
+                        </Col>
                     <Col xs={12} md={6} xl={5}>
                         <img className="img-header" src={restingPlanet} alt="Resting Planet" />
                     </Col>

@@ -8,7 +8,8 @@ import entrego from '../assets/img/entrego.png';
 import coins from '../assets/img/coins.png';
 import dcr from '../assets/img/dcr.png';
 import bank_integ from '../assets/img/bpi_integ.png';
-import colorSharp2 from '../assets/img/color-sharp2.png';
+import 'animate.css';
+import TrackVisibility from 'react-on-screen';
 
 export const Projects = () => {
     
@@ -62,17 +63,22 @@ export const Projects = () => {
             <Row>
                 <Col>
                     <h2>Projects</h2>
-                    <p>Here are some of my recent projects showcasing my skills and expertise.</p>
+                    <TrackVisibility>
+                        {({ isVisible }) => 
+                        <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                            <p>Here are some of my recent projects showcasing my skills and expertise. These projects demonstrate my proficiency in various technologies and my ability to deliver high-quality solutions. I have worked on diverse applications ranging from banking systems to internal tools, each contributing to my growth as a developer.</p>
+                        </div>}
+                    </TrackVisibility>
                     <Tab.Container id="projects-tabs" defaultActiveKey="first">
-                    <Nav variant="pills" defaultActiveKey="/home">
+                    <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                             <Nav.Item>
                                 <Nav.Link eventKey="first">Novare Technologies</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="second">Sunlife (Internal)</Nav.Link>
+                                <Nav.Link eventKey="second">Sunlife (Internal Projects)</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link eventKey="third">More Internal Tools</Nav.Link>
+                                <Nav.Link eventKey="third">More Internal Projects</Nav.Link>
                             </Nav.Item>
                         </Nav>
                         <Tab.Content>
@@ -122,7 +128,6 @@ export const Projects = () => {
                         </Tab.Container>
                     </Col>
                 </Row>
-            <img className="background-image-right" src={colorSharp2} />
         </section>
     );
 }

@@ -2,7 +2,8 @@ import { Col, Row } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useState, useEffect, useRef } from 'react';
-import colorSharp from '../assets/img/color-sharp.png';
+import 'animate.css';
+import TrackVisibility from 'react-on-screen';
 
 export const Skills = () => {
     const skills = [
@@ -99,38 +100,61 @@ export const Skills = () => {
                 <Col>
                     <div className="skill-bx">
                         <h2>Skills</h2>
-                        <p>Here are some of my technical skills and proficiencies.</p>
-                        <Carousel responsive={responsive} infinite={true} className="skill-slider">
-                            {skills.map((skill, index) => {
-                                const offset = circumference * (1 - animatedPercentages[index] / 100);
-                                return (
-                                    <div key={index} className='item'>
-                                        <svg className="circular-progress" width="180" height="180">
-                                            <defs>
-                                                <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                                                    <stop offset="0%" stopColor="#AA367C" />
-                                                    <stop offset="100%" stopColor="#4A2FBD" />
-                                                </linearGradient>
-                                            </defs>
-                                            <circle cx="90" cy="90" r={radius} stroke="#333" strokeWidth="25" fill="none" />
-                                            <circle
-                                                cx="90"
-                                                cy="90"
-                                                r={radius}
-                                                stroke="url(#gradient)"
-                                                strokeWidth="25"
-                                                fill="none"
-                                                strokeDasharray={circumference}
-                                                strokeDashoffset={offset}
-                                                strokeLinecap="round"
-                                                className="progress-circle"
-                                            />
-                                        </svg>
-                                        <h5>{skill.name} {displayPercentages[index]}%</h5>
-                                    </div>
-                                );
-                            })}
-                        </Carousel>
+                        <TrackVisibility>
+                            {({ isVisible }) => 
+                            <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                                 <p>Here are some of my technical skills and proficiencies, developed through hands-on experience in building, 
+                                maintaining, and improving real-world applications.<br /> I have worked across backend and frontend technologies, 
+                                focusing on clean code, performance, and security best practices. 
+                                These skills enable me to deliver reliable solutions <br />while continuously learning and adapting to new tools and frameworks.</p>
+                            </div>}
+                        </TrackVisibility>
+                        <div className="skills-grid">
+                        {skills.map((skill, index) => {
+                            const offset =
+                            circumference * (1 - animatedPercentages[index] / 100);
+
+                            return (
+                            <div key={index} className="skill-item">
+                                <svg className="circular-progress" width="180" height="180">
+                                <defs>
+                                    <linearGradient id={`gradient-${index}`} x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stopColor="#AA367C" />
+                                    <stop offset="100%" stopColor="#4A2FBD" />
+                                    </linearGradient>
+                                </defs>
+
+                                <circle
+                                    cx="90"
+                                    cy="90"
+                                    r={radius}
+                                    stroke="#333"
+                                    strokeWidth="25"
+                                    fill="none"
+                                />
+
+                                <circle
+                                    cx="90"
+                                    cy="90"
+                                    r={radius}
+                                    stroke={`url(#gradient-${index})`}
+                                    strokeWidth="25"
+                                    fill="none"
+                                    strokeDasharray={circumference}
+                                    strokeDashoffset={offset}
+                                    strokeLinecap="round"
+                                    className="progress-circle"
+                                />
+                                </svg>
+
+                                <h5>
+                                {skill.name} {displayPercentages[index]}%
+                                </h5>
+                            </div>
+                            );
+                        })}
+                        </div>
+
                     </div>
                 </Col>
             </Row>

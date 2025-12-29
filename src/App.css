@@ -84,6 +84,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /************ Navbar CSS **********/
+.logo-img {
+    filter: invert(1);
+    width: 200%;
+}
+
 nav.navbar {
   padding: 18px 0;
   position: fixed;
@@ -314,6 +319,23 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 /************ Skills Css ************/
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 16px;     /* horizontal gap */
+  row-gap: 30px;        /* vertical gap */
+  justify-items: center;
+
+  max-width: 1500px;     /* 🔥 key fix */
+  margin: 0 auto;       /* center the grid */
+}
+
+
+.skill-item {
+  text-align: center;
+}
+
 .skill {
   padding: 0 0 50px 0;
   position: relative;
@@ -323,7 +345,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-radius: 64px;
   text-align: center;
   padding: 60px 50px;
-  margin-top: -60px;
+  margin-top: 60px;
 }
 .skill h2 {
 	font-size: 45px;
@@ -355,7 +377,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Projects Css ************/
 .project {
-  padding: 80px 0;
+  padding: 80px 0 0 0;
   position: relative;
   background-color: black;
 }
@@ -605,7 +627,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Footer Css ************/
 .footer {
-  padding: 0 0 50px 0;
+  padding: 100px 0 50px 0;
   background-image: url('./assets/img/footer-bg.png');
   background-position: center center;
   background-size: cover;
@@ -617,7 +639,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   color: #121212;
   padding: 85px 125px;
   margin-bottom: 80px;
-  margin-top: -122px;
+  margin-top: -50px;
 }
 .newsletter-bx h3 {
   font-weight: 700;
